@@ -1,0 +1,64 @@
+@use '@styles/_variables.scss' as variables;
+
+.pokemon-list-item {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @each $type, $color in variables.$type-colors {
+        &.#{$type} {
+            background-color: $color;
+        }
+    }
+
+    @each $type1, $color1 in variables.$type-colors {
+        @each $type2, $color2 in variables.$type-colors {
+            &.#{$type1}-#{$type2} {
+                background: linear-gradient(135deg, $color1 0%, $color1 5%, $color2 95%, $color2 100%);
+            }
+        }
+    }
+
+    .pokemon-list-item-img {
+        width: 100px;
+        transition: transform 0.5s ease;
+        position: relative;
+        z-index: 1;
+
+        &.zoom-out {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(4);
+            width: 400px;
+            height: 400px;
+            z-index: 1000;
+            transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+        }
+    }
+
+    .pokemon-list-item-text {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 1;
+            margin: 0;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.pokemon-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+
+    .fa-heart {
+        color: red;
+    }
+}

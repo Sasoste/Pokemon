@@ -1,0 +1,43 @@
+$type-colors: (
+  normal: #A8A77A,
+  fire: #EE8130,
+  water: #6390F0,
+  electric: #F7D02C,
+  grass: #7AC74C,
+  ice: #96D9D6,
+  fighting: #C22E28,
+  poison: #A33EA1,
+  ground: #E2BF65,
+  flying: #A98FF3,
+  psychic: #F95587,
+  bug: #A6B91A,
+  rock: #B6A136,
+  ghost: #735797,
+  dragon: #6F35FC,
+  dark: #705746,
+  steel: #B7B7CE,
+  fairy: #D685AD
+);
+
+$pokeapi-colors: (
+  black: #2A2A2A,
+  blue: #3B4CCA,
+  brown: #A0522D,
+  gray: #A8A8A8,
+  green: #3CB371,
+  pink: #FF69B4,
+  purple: #A020F0,
+  red: #FF0000,
+  white: #FFFFFF,
+  yellow: #FFD700,
+);
+
+@function get-pokeapi-color($color-name) {
+  @return map-get($pokeapi-colors, $color-name);
+}
+
+@each $color-name, $color-value in $pokeapi-colors {
+  .color-#{"" + $color-name} {
+    --primary-color: #{$color-value};
+  }
+}
